@@ -1,8 +1,12 @@
-# React + Vite
+Project Name: LearnMe
+Features of This Project:
+* Fully Responsive with mobile and Tablet
+* User can Account with their email and google account easily.
+* Here any one can request for teacher.
+* admin can see all teacher request, and teachers added classes.
+* teacher can sell here any course if admin can accept
+* general student user can enroll any course and get them their dashboard
+* This project setup 3 users different dashboard and they can see different featurese there.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Site Live Link: https://learnme-83e14.web.app

@@ -1,11 +1,41 @@
 /* eslint-disable react/prop-types */
 
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+
 
 const SingleTopCourse = ({course}) => {
+    const axiosSecure =useAxiosSecure();
+
+   const handleEnroll = _id=> {
+     axiosSecure
+       .post(`/enroll/${_id}`)
+       .then((res) => {
+         console.log(res.data);
+         if (res.data.insertedId> 0) {
+           Swal.fire({
+             position: "top-end",
+             icon: "success",
+             title: `${course.title} is Enrolled`,
+             showConfirmButton: false,
+             timer: 2000,
+           });
+         }
+       })
+       .catch((error) => {
+         console.error('Error accepting course:', error);
+         // Handle the error as needed (e.g., show an error message to the user)
+       });
+   };
+
+
+
+
+
     
 
     // eslint-disable-next-line no-unused-vars
-    const {image,title,name,email,description,price,enroll,reviews} = course;
+    const {image,title,name,email,description,price,enroll,reviews,_id} = course;
     return (
         <div>
             <div className="card bg-base-100 shadow-xl lg:px-0 md:px-0 px-6">
@@ -23,7 +53,7 @@ const SingleTopCourse = ({course}) => {
                     <p className="text-gray-600 font-bold">Reviews: {reviews}</p>
                 </div>
                 <div className="card-actions justify-center pt-8">
-                <button className="btn btn-warning">Enroll Now</button>
+                <button onClick={()=>handleEnroll(_id)} className="btn btn-warning">Enroll Now</button>
                 </div>
             </div>
         </div>
