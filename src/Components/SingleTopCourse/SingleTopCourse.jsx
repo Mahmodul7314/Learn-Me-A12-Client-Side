@@ -17,11 +17,11 @@ const SingleTopCourse = ({course}) => {
           console.log(res.data);
     
           // eslint-disable-next-line no-undef
-          if (res.data) {
+          if (res.data.insertedId) {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: `${course.title} is Enrolled`,
+              title: " This Course is Enrolled",
               showConfirmButton: false,
               timer: 2000,
             });
