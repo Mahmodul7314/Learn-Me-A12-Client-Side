@@ -15,7 +15,7 @@ const SingleTopCourse = ({course, _id}) => {
         .then((res) => {
           console.log(res.data);
     
-          if (res.status === 200 && insertedId>= 1) {
+          if (insertedId === 1) {
             Swal.fire({
               position: "top-end",
               icon: "success",
