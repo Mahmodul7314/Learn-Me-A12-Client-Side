@@ -5,7 +5,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 
-const SingleTopCourse = ({course, _id}) => {
+const SingleTopCourse = ({course}) => {
     const axiosSecure =useAxiosSecure();
     const handleEnroll = (_id, course) => {
       console.log(_id);
@@ -15,7 +15,8 @@ const SingleTopCourse = ({course, _id}) => {
         .then((res) => {
           console.log(res.data);
     
-          if (insertedId === 1) {
+          // eslint-disable-next-line no-undef
+          if (data.status==="success") {
             Swal.fire({
               position: "top-end",
               icon: "success",
