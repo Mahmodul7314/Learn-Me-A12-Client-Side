@@ -38,7 +38,7 @@ console.log(user);
 
       </ul>
     </div>
-    <a className=" text-5xl font-bold">Learn<span className="text-yellow-500">Me</span></a>
+    <a className=" text-5xl font-bold">Edu<span className="text-yellow-500">Forge</span></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
