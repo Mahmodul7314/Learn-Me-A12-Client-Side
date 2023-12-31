@@ -21,7 +21,7 @@ const SingleTopCourse = ({course}) => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: " This Course is Enrolled",
+              title: `${course.title} is Enrolled`,
               showConfirmButton: false,
               timer: 2000,
             });
