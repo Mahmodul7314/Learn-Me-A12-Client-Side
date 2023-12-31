@@ -4,11 +4,8 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const SingleAllClasses = ({course}) => {
-    const {title, image, name,email,price, description,enroll, reviews, _id} = course || {};
 
 
-
-   
         const axiosSecure =useAxiosSecure();
         const handleEnroll = (_id, course) => {
           console.log(_id);
@@ -40,7 +37,7 @@ const SingleAllClasses = ({course}) => {
         };
     
 
-
+        const {title, image, name,email,price, description,enroll, reviews, _id} = course || {};
     return (
         <div>
             <div className="card bg-base-100 shadow-xl lg:px-0 md:px-0 px-6 h-[38rem]">
@@ -57,11 +54,13 @@ const SingleAllClasses = ({course}) => {
                     <p className="text-gray-600 font-bold">Enroll: {enroll}</p>
                     <p className="text-gray-600 font-bold">Reviews: {reviews}</p>
                 </div>
-               
+         
             </div>
             <div className="card-actions justify-center py-6">
             <button onClick={()=>handleEnroll(_id)} className="btn btn-warning">Enroll Now</button>
                 </div>
+   
+               
         </div>
         </div>
     );
