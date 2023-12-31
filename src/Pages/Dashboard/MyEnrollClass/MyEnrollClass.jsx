@@ -22,9 +22,9 @@ const MyEnrollClass = () => {
      
     return (
         <div>
-            <h3 className="text-5xl">My Enroll class</h3>
-            <div>{classes.length}</div>
-            <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 lg:gap-y-0 md:gap-y-3 gap-y-4'>
+            <h3 className="text-5xl py-12">My Enroll class</h3>
+           
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 lg:gap-y-6 md:gap-y-3 gap-y-4'>
         {
             classes.map(course=><EnrollSingleClass key={course._id} course={course}
             ></EnrollSingleClass>)
