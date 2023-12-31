@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
@@ -16,7 +17,7 @@ const SingleTopCourse = ({course}) => {
           console.log(res.data);
     
           // eslint-disable-next-line no-undef
-          if (res.data.insertedId) {
+          if (res.data) {
             Swal.fire({
               position: "top-end",
               icon: "success",
