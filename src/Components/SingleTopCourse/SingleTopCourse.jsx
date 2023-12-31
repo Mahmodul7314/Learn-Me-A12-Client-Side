@@ -16,7 +16,7 @@ const SingleTopCourse = ({course}) => {
           console.log(res.data);
     
           // eslint-disable-next-line no-undef
-          if (data.status==="success") {
+          if (res.data.insertedId) {
             Swal.fire({
               position: "top-end",
               icon: "success",
