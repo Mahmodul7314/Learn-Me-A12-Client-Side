@@ -2,7 +2,7 @@
 import { createContext, useEffect, useState } from "react";
 import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";  
 import { app } from "../Firebase/firebase.config";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
+
 
 
 
@@ -15,7 +15,7 @@ const AuthProvider =({children}) => {
     const [user, setUser]=useState(null)
     const [loading, setLoading] = useState(true)
 
-    const axiosPublic = useAxiosPublic();
+   
 
 
 
@@ -44,39 +44,27 @@ const AuthProvider =({children}) => {
         return signOut(auth);
     }
     
+   
     const updateUserProfile = (name, photo)=>{
-       return updateProfile(auth.currentUser, {
-            displayName: name, photoURL:photo
-          });
-          
+        return updateProfile(auth.currentUser, {
+             displayName: name, photoURL:photo
+           });
+           
+     }
+    
+ //observing user
+ useEffect(()=>{
+    const unSubscribe= onAuthStateChanged(auth,currentUser=>{
+        console.log('user in the auth state change',currentUser)
+        setUser(currentUser)
+        setLoading(false);
+    });
+    return()=>{
+        unSubscribe();
     }
-    
-     useEffect(()=>{
-       const unsubscribe = onAuthStateChanged(auth,currentUser=>{
-        setUser(currentUser);
-         if(currentUser){
-            //send userInfo and get token and store client
-        const userInfo = {email:currentUser.email}
-        axiosPublic.post('/jwt', userInfo)
-        .then(res =>{
-            if(res.data.token){
-                localStorage.setItem('access-token', res.data.token);
-            }
-        })
-        
-        
-        }
-         else{
-            //ToDo: remove token(if token store in client site,local storage, cachin in memory)
-            localStorage.removeItem('access-token');
-        }
-          setLoading(false)
-    
-        })
-         return ()=>{
-            return unsubscribe();
-         }
-     },[axiosPublic])
+},[]);
+
+ 
     
  const authInfo ={
         user,

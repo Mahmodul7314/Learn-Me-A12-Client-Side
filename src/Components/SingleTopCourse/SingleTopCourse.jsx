@@ -4,30 +4,36 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
+
 const SingleTopCourse = ({course}) => {
     const axiosSecure =useAxiosSecure();
-
-   const handleEnroll = _id=> {
-     axiosSecure
-       .post(`/enroll/${_id}`)
-       .then((res) => {
-         console.log(res.data);
-         if (res.data.insertedId> 0) {
-           Swal.fire({
-             position: "top-end",
-             icon: "success",
-             title: `${course.title} is Enrolled`,
-             showConfirmButton: false,
-             timer: 2000,
-           });
-         }
-       })
-       .catch((error) => {
-         console.error('Error accepting course:', error);
-         // Handle the error as needed (e.g., show an error message to the user)
-       });
-   };
-
+    const handleEnroll = (_id, course) => {
+      console.log(_id);
+    
+      axiosSecure
+        .post(`/enroll/${_id}`)
+        .then((res) => {
+          console.log(res.data);
+    
+          if (res.status === 200) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${course.title} is Enrolled`,
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          } else {
+            console.error("Enrollment was not successful");
+            // Handle the case where enrollment was not successful
+            // You might want to show an error message to the user
+          }
+        })
+        .catch((error) => {
+          console.error('Error enrolling in the course:', error);
+          // Handle the error as needed (e.g., show an error message to the user)
+        });
+    };
 
 
 
